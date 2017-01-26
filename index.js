@@ -136,7 +136,7 @@ var messageWithPrompt = [
             payload: "yaaas"
         }
         ]   
-    }
+    },
     
     
     {
