@@ -13,6 +13,19 @@ var messageWithPrompt = [
     buttons: [
         {
             type:"postback",
+            title: "Sounds Great",
+            payload: "nilll"
+        }
+        
+        ]   
+    },
+    
+    {
+    promptNum: 1, 
+    message: "What type of wine is up first?",
+    buttons: [
+        {
+            type:"postback",
             title: "Cabernet Savignon",
             payload: "cabernet-savignon"
         },
@@ -24,7 +37,7 @@ var messageWithPrompt = [
         }
         
         ]   
-    }                       
+    }       
 ];
 
 
@@ -196,8 +209,11 @@ function receivedPostback(event) {
     //received payload from user input....could have been from any message number
     var botPromptNum = payload.botPromptNumb
     
-    //send the user the NEXT prompt
+    //increment var
+    completedBotPrompt++;
     
+    //send the user the NEXT prompt
+    sendMessage(senderID, completedBotPrompt);
     
 
   // When a postback is called, we'll send a message back to the sender to 
