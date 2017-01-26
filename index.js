@@ -264,7 +264,8 @@ function receivedMessage(event) {
     // and send back the example. Otherwise, just echo the text we received.
     switch (messageText) {
       case 'Wine':
-        sendMessage(senderID, sentBotPrompt);
+        completedBotPrompt = 0;
+        sendMessage(senderID, completedBotPrompt);
         break;
 
       default:
