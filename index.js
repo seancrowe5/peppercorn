@@ -4,6 +4,39 @@ var app = express();
 var bodyParser = require('body-parser');
 var request = require('request');
 
+//SEAN's VARS...i know all this shouldn't be in index.js...but w/e
+
+var messageWithPrompt = [
+    {
+    promptNum: 0, 
+    message: "Hey there! My name is Pepp and I'll be your wine tasting guide for the evening :)",
+    buttons: [
+        {
+            type:"postback",
+            title: "Cabernet Savignon",
+            payload: {
+                botPromptNumb: 0,
+                wineSelection: "cabernet-savignon"
+            }
+        },
+        
+        {
+            type:"postback",
+            title: "Temparnillo",
+            payload: {
+                botPromptNumb: 0,
+                wineSelection: "tempranillo"}
+        }
+        
+        ]   
+    }                       
+];
+
+
+var sentBotPrompt = 0;
+var completedBotPrompt = 0;
+
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -103,7 +136,7 @@ function receivedMessage(event) {
     // and send back the example. Otherwise, just echo the text we received.
     switch (messageText) {
       case 'Wine':
-        sendGenericMessage(senderID);
+        sendMessage(senderID, sentBotPrompt);
         break;
 
       default:
@@ -114,7 +147,16 @@ function receivedMessage(event) {
   }
 }
 
-function sendGenericMessage(recipientId) {
+function sendMessage(recipientId, promptNum) {
+ 
+    //get the messagePromptObject
+    var messageObject = messageWithPrompt[promptNum];
+    
+     //vars for building message
+    var messageText = messageObject.message;
+    var messageButtons =  messageObject.buttons;
+    
+
   var messageData = {
     recipient: {
       id: recipientId
@@ -124,24 +166,14 @@ function sendGenericMessage(recipientId) {
         type: "template",
         payload: {
             template_type: "button",
-            text: "What type of wine are you drinking?",
-            buttons:[
-                {
-                    type:"postback",
-                    title: "Cabernet Savignon",
-                    payload: "cabernet savignon"
-                },
-                {
-                    type:"postback",
-                    title: "Temparnillo",
-                    payload: "tempranillo"
-                }
-            ]
+            text: messageText,
+            buttons:messageButtons
         }
       }
     }
   };  
 
+    
   callSendAPI(messageData);
 }
 
@@ -167,8 +199,12 @@ function receivedPostback(event) {
   // button for Structured Messages. 
   var payload = event.postback.payload;
 
-  console.log("Received postback for user %d and page %d with payload '%s' " + 
-    "at %d", senderID, recipientID, payload, timeOfPostback);
+    //received payload from user input....could have been from any message number
+    var botPromptNum = payload.botPromptNumb
+    
+    //send the user the NEXT prompt
+    
+    
 
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
