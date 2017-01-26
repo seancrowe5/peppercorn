@@ -14,18 +14,13 @@ var messageWithPrompt = [
         {
             type:"postback",
             title: "Cabernet Savignon",
-            payload: {
-                botPromptNumb: 0,
-                wineSelection: "cabernet-savignon"
-            }
+            payload: "cabernet-savignon"
         },
         
         {
             type:"postback",
             title: "Temparnillo",
-            payload: {
-                botPromptNumb: 0,
-                wineSelection: "tempranillo"}
+            payload: "tempranillo"
         }
         
         ]   
@@ -167,20 +162,7 @@ function sendMessage(recipientId, promptNum) {
         payload: {
             template_type: "button",
             text: messageText,
-            buttons:[
-        {
-            type:"postback",
-            title: "Cabernet Savignon",
-            payload: "payload"
-        },
-        
-        {
-            type:"postback",
-            title: "Temparnillo",
-            payload: "payload"
-        }
-        
-        ]   
+            buttons:messageButtons
         }
       }
     }
@@ -189,7 +171,7 @@ function sendMessage(recipientId, promptNum) {
     console.log(messageText);
     console.log(messageButtons);
 
-  callSendAPI(messageData);
+  //callSendAPI(messageData);
 }
 
 function sendTextMessage(recipientId, messageText) {
