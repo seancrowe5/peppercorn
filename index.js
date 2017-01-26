@@ -9,7 +9,7 @@ var request = require('request');
 var messageWithPrompt = [
     {
     promptNum: 0, 
-    message: "Hey there! My name is Pepp and Ill be your wine tasting guide for the evening ",
+    message: "Hey there! My name is Pepp and I'll be your wine tasting guide for the evening!",
     buttons: [
         {
             type:"postback",
@@ -19,6 +19,7 @@ var messageWithPrompt = [
         
         ]   
     },
+    
     
     {
     promptNum: 1, 
@@ -37,8 +38,133 @@ var messageWithPrompt = [
         }
         
         ]   
-    }       
+    },
+    
+    
+    {
+    promptNum: 2, 
+    message: "Cab is one of my favorites! Lets start by swirling the wine around and taking a big sniff. Do you notice any of these smells?",
+    buttons: [
+        {
+            type:"postback",
+            title: "Currant",
+            payload: "currant"
+        },
+        
+        {
+            type:"postback",
+            title: "Vanilla",
+            payload: "vanilla"
+        },
+        
+        {
+            type:"postback",
+            title: "Bell Pepper",
+            payload: "bell-pepper"
+        },
+        
+        {
+            type:"postback",
+            title: "None of These",
+            payload: "none"
+        }
+        
+        ]   
+    },
+
+    
+    {
+    promptNum: 3, 
+    message: "Right on! The majority Cabs typically have hints of Vanilla good job! Want to know how that scent is produced in the wine? It's pretty fascinating.",
+    buttons: [
+        {
+            type:"postback",
+            title: "Sure!!",
+            payload: "yaaas"
+        }
+        ]   
+    },
+    
+    
+    
+    {
+    promptNum: 4, 
+    message: "Well....the vanilla comes from the time period that the wine is ageing in the oak barrels! The wine soaks up the stuff from the New Oak barrels and has properties of vanilla.",
+    buttons: [
+        {
+            type:"postback",
+            title: "Pretty Neat Stuff! Let's start drinking.",
+            payload: "yaaas"
+        }
+        ]   
+    },
+    
+    
+    
+    {
+    promptNum: 5, 
+    message: "I don't know about you but it's been a long week for me...time to drink yeah? Take your first sip and swish it around real good to prep your pallate. Then take another sip and start to notice some flavors. Notice any of these?",
+    buttons: [
+        {
+            type:"postback",
+            title: "Black Cherry",
+            payload: "black-cherry"
+        },
+        
+        {
+            type:"postback",
+            title: "Black Currant",
+            payload: "black-currant"
+        },
+        
+        {
+            type:"postback",
+            title: "Tabacco",
+            payload: "tabacco"
+        }
+        ]   
+    },
+    
+    
+    {
+    promptNum: 6, 
+    message: "Definitley! Cabernets typically show notes of DARK FRUIT like cherry...your palate is so good already!",
+    buttons: [
+        {
+            type:"postback",
+            title: "Aw shucks Pepp :) ",
+            payload: "yaaas"
+        }
+        ]   
+    }
+    
+    
+    {
+    promptNum: 7, 
+    message: "Ask your friends if they taste the Cherry in this Cab as well! See how good they are ;)",
+    buttons: [
+        {
+            type:"postback",
+            title: "Woah look at that, They agreed! ",
+            payload: "yaaas"
+        }
+        ]   
+    },
+    
+    
+    {
+    promptNum: 8, 
+    message: "Awesome! Enjoy the reset of this glass! Let me know when you're on the next wine. ",
+    buttons: [
+        {
+            type:"postback",
+            title: "Sounds Great!",
+            payload: "yaaas"
+        }
+        ]   
+    }                      
 ];
+
 
 
 var sentBotPrompt = 0;
