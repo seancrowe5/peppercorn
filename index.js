@@ -171,18 +171,13 @@ function sendMessage(recipientId, promptNum) {
         {
             type:"postback",
             title: "Cabernet Savignon",
-            payload: {
-                botPromptNumb: 0,
-                wineSelection: "cabernet-savignon"
-            }
+            payload: "payload"
         },
         
         {
             type:"postback",
             title: "Temparnillo",
-            payload: {
-                botPromptNumb: 0,
-                wineSelection: "tempranillo"}
+            payload: "payload"
         }
         
         ]   
