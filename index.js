@@ -173,8 +173,10 @@ function sendMessage(recipientId, promptNum) {
     }
   };  
 
-    
-  callSendAPI(messageData);
+    console.log(messageText);
+    console.log(messageButtons);
+
+  //callSendAPI(messageData);
 }
 
 function sendTextMessage(recipientId, messageText) {
