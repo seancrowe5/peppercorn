@@ -61,12 +61,6 @@ var messageWithPrompt = [
             type:"postback",
             title: "Bell Pepper",
             payload: "bell-pepper"
-        },
-        
-        {
-            type:"postback",
-            title: "None of These",
-            payload: "none"
         }
         
         ]   
