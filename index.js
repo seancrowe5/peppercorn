@@ -9,7 +9,7 @@ var request = require('request');
 var messageWithPrompt = [
     {
     promptNum: 0, 
-    message: "Hey there! My name is Pepp and I'll be your wine tasting guide for the evening :)",
+    message: "Hey there! My name is Pepp and Ill be your wine tasting guide for the evening ",
     buttons: [
         {
             type:"postback",
@@ -167,7 +167,25 @@ function sendMessage(recipientId, promptNum) {
         payload: {
             template_type: "button",
             text: messageText,
-            buttons:messageButtons
+            buttons:[
+        {
+            type:"postback",
+            title: "Cabernet Savignon",
+            payload: {
+                botPromptNumb: 0,
+                wineSelection: "cabernet-savignon"
+            }
+        },
+        
+        {
+            type:"postback",
+            title: "Temparnillo",
+            payload: {
+                botPromptNumb: 0,
+                wineSelection: "tempranillo"}
+        }
+        
+        ]   
         }
       }
     }
