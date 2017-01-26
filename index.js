@@ -122,7 +122,7 @@ function sendTextMessage(recipientId, messageText) {
       id: recipientId
     },
     message: {
-      text: messageText + ' hey'
+      text: 'yo yo yo'
     }
   };
 
