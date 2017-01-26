@@ -194,7 +194,7 @@ function sendMessage(recipientId, promptNum) {
     console.log(messageText);
     console.log(messageButtons);
 
-  //callSendAPI(messageData);
+  callSendAPI(messageData);
 }
 
 function sendTextMessage(recipientId, messageText) {
