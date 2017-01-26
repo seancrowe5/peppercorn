@@ -65,6 +65,8 @@ app.post('/webhook', function (req, res) {
      entry.messaging.forEach(function(event) {
        if (event.message) {
          receivedMessage(event);
+       }else if (event.postback) {
+          receivedPostback(event);
        } else {
          console.log("Webhook received unknown event: ", event);
        }
@@ -77,8 +79,6 @@ app.post('/webhook', function (req, res) {
    // you've successfully received the callback. Otherwise, the request
    // will time out and we will keep trying to resend.
    res.sendStatus(200);
- }else if (event.postback) {
-          receivedPostback(event);
  }
 });
 
