@@ -5,12 +5,28 @@ var bodyParser = require('body-parser');
 var request = require('request');
 
 //SEAN's VARS...i know all this shouldn't be in index.js...but w/e
-
+/*
+  var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            text:messageText,
+            quick_replies:[
+                {
+                    content_type:"text",
+                    title:"Red",
+                    payload:"nilll"
+                }
+            ]
+        }
+    };
+*/
 var messageWithPrompt = [
     {
     promptNum: 0, 
     message: "Hey there! Welcome to SipJoy. I'll be your wine tasting guide for the evening!",
-    quick_replies: [
+    replies: [
         {
             content_type:"text",
             title: "Sounds Great",
@@ -24,17 +40,29 @@ var messageWithPrompt = [
     {
     promptNum: 1, 
     message: "What type of wine is up first?",
-    buttons: [
+    replies: [
         {
-            type:"postback",
+            content_type:"text",
             title: "Cabernet Savignon",
-            payload: "cabernet-savignon"
+            payload: "nilll"
         },
         
         {
-            type:"postback",
+            content_type:"text",
+            title: "Pinot Nior",
+            payload: "nilll"
+        },
+        
+        {
+            content_type:"text",
             title: "Temparnillo",
-            payload: "tempranillo"
+            payload: "nilll"
+        },
+        
+        {
+            content_type:"text",
+            title: "Chianti",
+            payload: "nilll"
         }
         
         ]   
@@ -282,8 +310,8 @@ function sendMessage(recipientId, promptNum) {
     var messageObject = messageWithPrompt[promptNum];
     
      //vars for building message
-//    var messageText = messageObject.message;
-//    var messageButtons =  messageObject.buttons;
+    var messageText = messageObject.message;
+    var messageReplies =  messageObject.replies;
     
 
     
@@ -292,16 +320,13 @@ function sendMessage(recipientId, promptNum) {
             id: recipientId
         },
         message: {
-            text:"pick a color:",
-            quick_replies:[
-                {
-                    content_type:"text",
-                    title:"Red",
-                    payload:"nilll"
-                }
-            ]
+            text:messageText,
+            quick_replies:messageReplies
         }
     };
+    
+    
+  
     
 //  var messageData = {
 //    recipient: {
