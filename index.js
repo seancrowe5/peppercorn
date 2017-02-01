@@ -28,7 +28,7 @@ var messageWithPrompt = [
     message: "Hey there! Welcome to SipJoy. I'll be your wine tasting guide for the evening!",
     replies: [
         {
-            content_type:"text",
+            content_type: "text",
             title: "Sounds Great",
             payload: "nilll"
         }
@@ -73,11 +73,7 @@ var messageWithPrompt = [
     promptNum: 2, 
     message: "Cab is one of my favorites! Lets start by swirling the wine around and taking a big sniff. Do you notice any of these smells?",
     buttons: [
-        {
-            content_type:"text",
-            title: "Temparnillo",
-            payload: "nilll"
-        },
+        
         {
             type:"postback",
             title: "Currant",
@@ -259,7 +255,7 @@ app.post('/webhook', function (req, res) {
      entry.messaging.forEach(function(event) {
        if (event.message) {
            //do something with message
-         if(event.message.payload){
+         if(event.message.quick_reply){
              receivedTextMessage(event)
          }
        }else if (event.postback) {
