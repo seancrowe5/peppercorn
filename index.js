@@ -257,6 +257,8 @@ app.post('/webhook', function (req, res) {
            //do something with message
          if(event.message.quick_reply){
              receivedTextMessage(event)
+         }else{
+             receivedMessage(event)
          }
        }else if (event.postback) {
           receivedPostback(event);
