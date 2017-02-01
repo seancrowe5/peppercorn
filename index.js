@@ -301,15 +301,6 @@ function sendMessage(recipientId, promptNum) {
     var messageText = messageObject.message;
     var messageReplies =  messageObject.replies;
     
-    "message":{
-    "attachment":{
-      "type":"image",
-      "payload":{
-        "url":"https://petersapparel.com/img/shirt.png"
-      }
-    }
-  }
-    
     var messageData = {
             recipient: {
                 id: recipientId
