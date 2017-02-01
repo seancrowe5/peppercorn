@@ -68,31 +68,13 @@ var messageWithPrompt = [
         ]   
     },
     
+   
     
     {
     promptNum: 2, 
-    message: "Cab is one of my favorites! Lets start by swirling the wine around and taking a big sniff. Do you notice any of these smells?",
-    buttons: [
-        
-        {
-            type:"postback",
-            title: "Currant",
-            payload: "currant"
-        },
-        
-        {
-            type:"postback",
-            title: "Vanilla",
-            payload: "vanilla"
-        },
-        
-        {
-            type:"postback",
-            title: "Bell Pepper",
-            payload: "bell-pepper"
-        }
-        
-        ]   
+    message: "Cab is one of my favorites! Lets start by swirling like this to release the aromas from the wine.",
+    url: "https://pacific-sierra-92132.herokuapp.com/public/img/Ashley.gif",
+    replies: []
     },
 
     
@@ -319,17 +301,40 @@ function sendMessage(recipientId, promptNum) {
     var messageText = messageObject.message;
     var messageReplies =  messageObject.replies;
     
-
+    "message":{
+    "attachment":{
+      "type":"image",
+      "payload":{
+        "url":"https://petersapparel.com/img/shirt.png"
+      }
+    }
+  }
     
     var messageData = {
-        recipient: {
-            id: recipientId
-        },
-        message: {
-            text:messageText,
-            quick_replies:messageReplies
+            recipient: {
+                id: recipientId
+            },
+            message: {
+                text:messageText,
+                quick_replies:messageReplies
+            };
         }
-    };
+    
+    if(messageObject.url){
+        var messageData = {
+            recipient: {
+                id: recipientId
+            },
+            message: {
+                attachment:{
+                    type:"image",
+                    payload:{
+                        url:messageObject.url
+                    }
+                }  
+            }
+        };
+    }
     
     
   
