@@ -74,6 +74,11 @@ var messageWithPrompt = [
     message: "Cab is one of my favorites! Lets start by swirling the wine around and taking a big sniff. Do you notice any of these smells?",
     buttons: [
         {
+            content_type:"text",
+            title: "Temparnillo",
+            payload: "nilll"
+        },
+        {
             type:"postback",
             title: "Currant",
             payload: "currant"
@@ -253,7 +258,10 @@ app.post('/webhook', function (req, res) {
      // Iterate over each messaging event
      entry.messaging.forEach(function(event) {
        if (event.message) {
-         receivedMessage(event);
+           //do something with message
+         if(event.message.payload){
+             receivedTextMessage(event)
+         }
        }else if (event.postback) {
           receivedPostback(event);
        } else {
@@ -384,6 +392,29 @@ function receivedPostback(event) {
   //sendTextMessage(senderID, "Postback called");
 }
 
+function receivedTextMessage(event) {
+  var senderID = event.sender.id;
+  var recipientID = event.recipient.id;
+  var timeOfPostback = event.timestamp;
+
+  // The 'payload' param is a developer-defined field which is set in a postback 
+  // button for Structured Messages. 
+  var payload = event.message.quick_reply.payload;
+
+    //received payload from user input....could have been from any message number
+    var botPromptNum = payload.botPromptNumb
+    
+    //increment var
+    completedBotPrompt++;
+    
+    //send the user the NEXT prompt
+    sendMessage(senderID, completedBotPrompt);
+    
+
+  // When a postback is called, we'll send a message back to the sender to 
+  // let them know it was successful
+  //sendTextMessage(senderID, "Postback called");
+}
 
 function callSendAPI(messageData) {
   request({
