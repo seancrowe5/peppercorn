@@ -308,8 +308,8 @@ function sendMessage(recipientId, promptNum) {
             message: {
                 text:messageText,
                 quick_replies:messageReplies
-            };
-        }
+            }
+        };
     
     if(messageObject.url){
         var messageData = {
