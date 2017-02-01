@@ -73,7 +73,7 @@ var messageWithPrompt = [
     {
     promptNum: 2, 
     message: "Cab is one of my favorites! Lets start by swirling like this to release the aromas from the wine.",
-    url: "https://pacific-sierra-92132.herokuapp.com/public/img/Ashley.gif",
+    url: "https://pacific-sierra-92132.herokuapp.com/img/Ashley.gif",
     replies: []
     },
 
