@@ -9,10 +9,10 @@ var request = require('request');
 var messageWithPrompt = [
     {
     promptNum: 0, 
-    message: "Hey there! My name is Pepp and I'll be your wine tasting guide for the evening!",
-    buttons: [
+    message: "Hey there! Welcome to SipJoy. I'll be your wine tasting guide for the evening!",
+    quick_replies: [
         {
-            type:"postback",
+            content_type:"text",
             title: "Sounds Great",
             payload: "nilll"
         }
@@ -87,7 +87,7 @@ var messageWithPrompt = [
     buttons: [
         {
             type:"postback",
-            title: "Pretty Neat Stuff! Let's start drinking.",
+            title: "Pretty Neat!",
             payload: "yaaas"
         }
         ]   
@@ -139,7 +139,7 @@ var messageWithPrompt = [
     buttons: [
         {
             type:"postback",
-            title: "Woah look at that, They agreed! ",
+            title: "They agreed! ",
             payload: "yaaas"
         }
         ]   
@@ -282,25 +282,42 @@ function sendMessage(recipientId, promptNum) {
     var messageObject = messageWithPrompt[promptNum];
     
      //vars for building message
-    var messageText = messageObject.message;
-    var messageButtons =  messageObject.buttons;
+//    var messageText = messageObject.message;
+//    var messageButtons =  messageObject.buttons;
     
 
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      attachment: {
-        type: "template",
-        payload: {
-            template_type: "button",
-            text: messageText,
-            buttons:messageButtons
+    
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            text:"pick a color:",
+            quick_replies:[
+                {
+                    content_type:"text",
+                    title:"Red",
+                    payload:"nilll"
+                }
+            ]
         }
-      }
-    }
-  };  
+    };
+    
+//  var messageData = {
+//    recipient: {
+//      id: recipientId
+//    },
+//    message: {
+//      attachment: {
+//        type: "template",
+//        payload: {
+//            template_type: "button",
+//            text: messageText,
+//            buttons:messageButtons
+//        }
+//      }
+//    }
+//  };  
 
   callSendAPI(messageData);
 }
