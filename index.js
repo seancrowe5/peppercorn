@@ -4,6 +4,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var request = require('request');
 
+var message = require('./message.js');
+
 //SEAN's VARS...i know all this shouldn't be in index.js...but w/e
 /*
   var messageData = {
@@ -221,6 +223,8 @@ app.get('/webhook', function(req, res) {
     res.sendStatus(403);          
   }  
 });
+
+router.post('/api/message', message.receieve);
 
 app.post('/webhook', function (req, res) {
  var data = req.body;
