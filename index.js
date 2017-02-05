@@ -224,7 +224,7 @@ app.get('/webhook', function(req, res) {
   }  
 });
 
-app.post('/message', message.validate);
+app.get('/message', message.validate);
 
 app.post('/webhook', function (req, res) {
  var data = req.body;
