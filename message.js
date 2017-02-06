@@ -14,7 +14,7 @@ var message = {
                         //check if 'wine' so we can start chatbot
                         if(event.message.text == 'Wine'){
                             //send first message
-                            sendMessagewithTreeNum(0);
+                            sendMessagewithTreeNum(event.recipient.id, 0);
                             
                         }
                         
