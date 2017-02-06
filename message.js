@@ -77,7 +77,7 @@ function sendMessagewithTreeNum(recipientId, treeNum){
     
      //vars for building message
     var messageText = messageObj.text;
-    var messageReplies =  messageObj.quick;
+    var messageReplies = [messageObj.quick];
     
     var messageData = {
             recipient: {
