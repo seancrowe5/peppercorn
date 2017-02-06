@@ -77,7 +77,22 @@ function sendMessagewithTreeNum(recipientId, treeNum){
     
      //vars for building message
     var messageText = messageObj.text;
-    var messageReplies = [messageObj.quick];
+    
+    //build quick replies
+    var replyStr = messageObj.quick;
+    var replyObj = [];
+    
+    replyStr.forEach(function(buttonStr) {
+        
+        var replyStructured = {
+            content_type: "text",
+            title: buttonStr,
+            payload: "nil"
+        };
+        
+        replyObj.append(replyStructured);
+    
+    });
     
     var messageData = {
             recipient: {
@@ -85,7 +100,7 @@ function sendMessagewithTreeNum(recipientId, treeNum){
             },
             message: {
                 text:messageText,
-                quick_replies:messageReplies
+                quick_replies:replyObj
             }
         };
     
