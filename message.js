@@ -9,14 +9,47 @@ var message = {
                 entry.messaging.forEach(function(event){
                     if(event.message){
                         //we've received a message object from the user
-                        //i guess now we want to analyze the message???
-                        console.log(event.message)
+                        //check if 'wine' so we can start chatbot
+                        if(event.message.text == 'Wine'){
+                            console.lgo("START");
+                        }
+                        
+                        
+                        
+                        //check the tree number
+                        var response = event.message;
+                        var treeNum = response.treeNum;
+                        
+                        if(treeNum == 0){
+                            //what type of wine are you drinking?//
+                            
+                            //record the wine type
+                            var wineType = response.quick_reply.payload;
+                            
+                            //send the next message with wineType variable in it
+                            sendMessagewithTreeNum(treeNum++);
+                            
+                        }else if(treeNum == 1){
+                            
+                        }else if(treeNum == 2){
+                            
+                        }else if(treeNum == 3){
+                            
+                        }else if(treeNum == 4){
+                            
+                        }else if(treeNum == 5){
+                            
+                        }
                     }
                 });
             });
         }
         
         res.sendStatus(200);
+    },
+    
+    send: function(req, res){
+        console.log('send message..data is: ', req.body);
     },
     
     validate: function(req, res){
@@ -31,5 +64,108 @@ var message = {
     }   
 };
 
+
+
+
+function sendMessagewithTreeNum(recipientId, treeNum){
+    
+     //vars for building message
+    var messageText = "Hey";
+    var messageReplies =  [];
+    
+    var messageData = {
+            recipient: {
+                id: recipientId
+            },
+            message: {
+                text:messageText,
+                quick_replies:messageReplies
+            }
+        };
+    
+//    if(messageObject.url){
+//        var messageData = {
+//            recipient: {
+//                id: recipientId
+//            },
+//            message: {
+//                attachment:{
+//                    type:"image",
+//                    payload:{
+//                        url:messageObject.url
+//                    }
+//                }  
+//            }
+//        };
+//    }
+     
+
+  callSendAPI(messageData);
+    
+    
+}
+
+function callSendAPI(messageData) {
+  request({
+    uri: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: { access_token: 'EAAPjiifdZBg8BABr7STcNJl6CCJuXrFpXMWuG28zendmg5bZBkQXzZBvXdnC2ImZBXiEhOZCIAkJyJxZCh22SsaSwI2riNm5pRP8pPn0xZAPtHd7ZBkmEdzTDIaASBQgG9IPvHaZBWyDwE5PMo0MP7t37iNGKfpu2iKXrnjT8ekOvfgZDZD' },
+    method: 'POST',
+    json: messageData
+
+  }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var recipientId = body.recipient_id;
+      var messageId = body.message_id;
+
+      console.log("Successfully sent generic message with id %s to recipient %s", 
+        messageId, recipientId);
+    } else {
+      console.error("Unable to send message.");
+      console.error(response);
+      console.error(error);
+    }
+  });  
+}
+
+
+
+/*
+
+
+function receivedMessage(event) {
+  var senderID = event.sender.id;
+  var recipientID = event.recipient.id;
+  var timeOfMessage = event.timestamp;
+  var message = event.message;
+
+  console.log("Received message for user %d and page %d at %d with message:", 
+    senderID, recipientID, timeOfMessage);
+  console.log(JSON.stringify(message));
+
+  var messageId = message.mid;
+
+  var messageText = message.text;
+  var messageAttachments = message.attachments;
+
+  if (messageText) {
+
+    // If we receive a text message, check to see if it matches a keyword
+    // and send back the example. Otherwise, just echo the text we received.
+    switch (messageText) {
+      case 'Wine':
+        completedBotPrompt = 0;
+        sendMessage(senderID, completedBotPrompt);
+        break;
+
+      default:
+        sendTextMessage(senderID, messageText);
+    }
+  } else if (messageAttachments) {
+    sendTextMessage(senderID, "Message with attachment received");
+  }
+}
+
+
+*/
 module.exports = message;
 

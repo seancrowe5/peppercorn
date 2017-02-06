@@ -1,0 +1,26 @@
+[
+    {
+      "treeNum": 0,
+      "text": "What type of wine are you drinking?",
+      "quick_reply": [{},{},{}]
+    },
+
+    {
+      "treeNum": 1,
+      "text": "Awesome! <WINE_TYPE> is one of my favs. Let's start by swirling and smelling the wine. Do you smell any of these?",
+      "quick_reply": []
+    },
+
+    {
+      "treeNum": 2,
+      "text": "Right on! The majority Cabs typically have hints of <SELECTED_AROMA> good job! Let's move on the how it tastes. Give the wine a sip! Do you taste any of these?",
+      "quick_reply": []
+    },
+
+    {
+      "treeNum": 3,
+      "text": "Definitley! <WINE_TYPE> typically show notes of <SELECTED_FLAVOR>...your palate is so good already!",
+      "quick_reply": [{},{},{}]
+    }
+
+]
