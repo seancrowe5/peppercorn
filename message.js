@@ -90,7 +90,7 @@ function sendMessagewithTreeNum(recipientId, treeNum){
             payload: "nil"
         };
         
-        replyObj.append(replyStructured);
+        replyObj.push(replyStructured);
     
     });
     
