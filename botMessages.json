@@ -2,22 +2,7 @@
     {
       "treeNum": 0,
       "text": "What type of wine are you drinking?",
-      "quick": [
-          {
-            content_type: "text",
-            title: "Cabernet Sauvignon",
-            payload: "nilll"
-          },
-          {
-            content_type: "text",
-            title: "Chardonnay",
-            payload: "nilll"
-          },
-          {
-            content_type: "text",
-            title: "Tempranillo",
-            payload: "nilll"
-          }]
+      "quick": [{content_type: "text", title: "Sounds Great", payload: "nilll"}]
     },
 
     {
