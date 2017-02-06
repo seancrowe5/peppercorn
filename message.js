@@ -72,6 +72,10 @@ var message = {
 
 
 function sendMessagewithTreeNum(recipientId, treeNum){
+    $.getJSON("botMessages.json", function(json) {
+        console.log(json); // this will show the info it in firebug console
+    });
+
     
      //vars for building message
     var messageText = "Hey";
