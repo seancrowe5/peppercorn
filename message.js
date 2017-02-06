@@ -1,4 +1,5 @@
 var request = require('request');
+var botMessages = require('./botMessages.json');
 
 var message = {
     
@@ -72,13 +73,10 @@ var message = {
 
 
 function sendMessagewithTreeNum(recipientId, treeNum){
-    $.getJSON("botMessages.json", function(json) {
-        console.log(json); // this will show the info it in firebug console
-    });
-
+    var messageObj = botMessages[treeNum];
     
      //vars for building message
-    var messageText = "Hey";
+    var messageText = messageObj.text;
     var messageReplies =  [];
     
     var messageData = {
