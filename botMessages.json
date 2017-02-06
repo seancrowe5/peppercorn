@@ -12,7 +12,8 @@
             content_type: "text",
             title: "Chardonnay",
             payload: "nilll"
-          },{
+          },
+          {
             content_type: "text",
             title: "Tempranillo",
             payload: "nilll"

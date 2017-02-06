@@ -85,7 +85,7 @@ function sendMessagewithTreeNum(recipientId, treeNum){
             },
             message: {
                 text:messageText,
-                quick_reply:messageReplies
+                quick_replies:messageReplies
             }
         };
     
