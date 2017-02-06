@@ -1,4 +1,3 @@
-var request = require('request');
 
 var message = {
     
@@ -82,8 +81,7 @@ function sendMessagewithTreeNum(recipientId, treeNum){
                 id: recipientId
             },
             message: {
-                text:messageText,
-                quick_replies:messageReplies
+                text:messageText
             }
         };
     
