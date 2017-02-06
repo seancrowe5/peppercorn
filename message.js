@@ -11,7 +11,7 @@ var message = {
                         //we've received a message object from the user
                         //check if 'wine' so we can start chatbot
                         if(event.message.text == 'Wine'){
-                            console.lgo("START");
+                            console.log("START");
                         }
                         
                         
