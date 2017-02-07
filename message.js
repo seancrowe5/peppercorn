@@ -12,11 +12,12 @@ var message = {
                 entry.messaging.forEach(function(event){
                     if(event.message){
                         //we've received a message object from the user
+                        console.log(event.message.seq);
+                        
                         //check if 'wine' so we can start chatbot
                         if(event.message.text == 'Wine'){
                             //send first message
                             sendMessagewithTreeNum(event.sender.id, 0);
-                            
                         }
                         
                         
@@ -86,7 +87,7 @@ function sendMessagewithTreeNum(recipientId, treeNum){
         var replyStructured = {
             content_type: "text",
             title: buttonStr,
-            payload: {pay: "nil"}
+            payload: "nil"
         };
         
         replyObj.push(replyStructured);
