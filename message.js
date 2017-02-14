@@ -14,13 +14,20 @@ var message = {
                         //we've received a message object from the user
                         console.log(event.message.seq);
                         
+                        var treeNum = event.message.seq;
+                        
                         //check if 'wine' so we can start chatbot
                         if(event.message.text == 'Wine'){
                             //send first message
-                            sendMessagewithTreeNum(event.sender.id, 0);
-                            startingSequenceNum = event.message.seq;
+                            treeNum = 0;
                         }
                         
+                        sendMessagewithTreeNum(event.sender.id, treeNum++);
+                       
+
+                        
+                        
+
                         
                         
                         //check the tree number
@@ -65,7 +72,13 @@ var message = {
 
 
 function sendMessagewithTreeNum(recipientId, treeNum){
-    var messageObj = botMessages[treeNum];
+    
+    var messageObj = null;
+    do {
+        messageObj = botMessages[treeNum];
+        treeNum++;
+    }
+    while (!messageObj);
     
      //vars for building message
     var messageText = messageObj.text;

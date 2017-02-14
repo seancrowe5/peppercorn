@@ -6,19 +6,19 @@
     },
 
     {
-      "treeNum": 1,
+      "treeNum": 3,
       "text": "Bot message 2",
       "quick_reply": ["Response 1", "Response 2"]
     },
 
     {
-      "treeNum": 2,
+      "treeNum": 6,
       "text": "Bot message 3",
       "quick_reply": ["Response 1", "Response 2"]
     },
 
     {
-      "treeNum": 3,
+      "treeNum": 9,
       "text": "Bot message 4",
       "quick_reply": ["Response 1", "Response 2"]
     }
