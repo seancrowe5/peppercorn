@@ -18,15 +18,16 @@ var message = {
                         if(event.message.text == 'Wine'){
                             //send first message
                             sendMessagewithTreeNum(event.sender.id, 0);
+                            startingSequenceNum = event.message.seq;
                         }
                         
                         
                         
                         //check the tree number
                         var response = event.message;
-                        var treeNum = response.treeNum;
+                        var treeNum = event.message.seq;
                         
-                        if(treeNum == 0){
+                        if(treeNum > startingSequenceNum){
                             //what type of wine are you drinking?//
                             
                             //record the wine type
@@ -34,16 +35,6 @@ var message = {
                             
                             //send the next message with wineType variable in it
                             sendMessagewithTreeNum(treeNum++);
-                            
-                        }else if(treeNum == 1){
-                            
-                        }else if(treeNum == 2){
-                            
-                        }else if(treeNum == 3){
-                            
-                        }else if(treeNum == 4){
-                            
-                        }else if(treeNum == 5){
                             
                         }
                     }

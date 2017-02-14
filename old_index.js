@@ -3,7 +3,179 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var request = require('request');
+
 var message = require('./message.js');
+
+//SEAN's VARS...i know all this shouldn't be in index.js...but w/e
+/*
+  var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            text:messageText,
+            quick_replies:[
+                {
+                    content_type:"text",
+                    title:"Red",
+                    payload:"nilll"
+                }
+            ]
+        }
+    };
+*/
+var messageWithPrompt = [
+    {
+    promptNum: 0, 
+    message: "Hey there! Welcome to SipJoy. I'll be your wine tasting guide for the evening!",
+    replies: [
+        {
+            content_type: "text",
+            title: "Sounds Great",
+            payload: "nilll"
+        }
+        
+        ]   
+    },
+    
+    
+    {
+    promptNum: 1, 
+    message: "What type of wine is up first?",
+    replies: [
+        {
+            content_type:"text",
+            title: "Cabernet Savignon",
+            payload: "nilll"
+        },
+        
+        {
+            content_type:"text",
+            title: "Pinot Nior",
+            payload: "nilll"
+        },
+        
+        {
+            content_type:"text",
+            title: "Temparnillo",
+            payload: "nilll"
+        },
+        
+        {
+            content_type:"text",
+            title: "Chianti",
+            payload: "nilll"
+        }
+        
+        ]   
+    },
+    
+   
+    
+    {
+    promptNum: 2, 
+    message: "Cab is one of my favorites! Lets start by swirling like this to release the aromas from the wine.",
+    url: "https://pacific-sierra-92132.herokuapp.com/img/Ashley.gif",
+    replies: []
+    },
+
+    
+    {
+    promptNum: 3, 
+    message: "Right on! The majority Cabs typically have hints of Vanilla good job! Want to know how that scent is produced in the wine? It's pretty fascinating.",
+    buttons: [
+        {
+            type:"postback",
+            title: "Sure!!",
+            payload: "yaaas"
+        }
+        ]   
+    },
+    
+    
+    
+    {
+    promptNum: 4, 
+    message: "Well....the vanilla comes from the time period that the wine is ageing in the oak barrels! The wine soaks up the stuff from the New Oak barrels and has properties of vanilla.",
+    buttons: [
+        {
+            type:"postback",
+            title: "Pretty Neat!",
+            payload: "yaaas"
+        }
+        ]   
+    },
+    
+    
+    
+    {
+    promptNum: 5, 
+    message: "I don't know about you but it's been a long week for me...time to drink yeah? Take your first sip and swish it around real good to prep your pallate. Then take another sip and start to notice some flavors. Notice any of these?",
+    buttons: [
+        {
+            type:"postback",
+            title: "Black Cherry",
+            payload: "black-cherry"
+        },
+        
+        {
+            type:"postback",
+            title: "Black Currant",
+            payload: "black-currant"
+        },
+        
+        {
+            type:"postback",
+            title: "Tabacco",
+            payload: "tabacco"
+        }
+        ]   
+    },
+    
+    
+    {
+    promptNum: 6, 
+    message: "Definitley! Cabernets typically show notes of DARK FRUIT like cherry...your palate is so good already!",
+    buttons: [
+        {
+            type:"postback",
+            title: "Aw shucks Pepp :) ",
+            payload: "yaaas"
+        }
+        ]   
+    },
+    
+    
+    {
+    promptNum: 7, 
+    message: "Ask your friends if they taste the Cherry in this Cab as well! See how good they are ;)",
+    buttons: [
+        {
+            type:"postback",
+            title: "They agreed! ",
+            payload: "yaaas"
+        }
+        ]   
+    },
+    
+    
+    {
+    promptNum: 8, 
+    message: "Awesome! Enjoy the reset of this glass! Let me know when you're on the next wine. ",
+    buttons: [
+        {
+            type:"postback",
+            title: "Sounds Great!",
+            payload: "yaaas"
+        }
+        ]   
+    }                      
+];
+
+
+
+var sentBotPrompt = 0;
+var completedBotPrompt = 0;
 
 
 app.set('port', (process.env.PORT || 5000));
@@ -16,6 +188,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+app.get('/', function(request, response) {
+  response.render('pages/index');
+});
+
+app.get('/times', function(request, response) {
+    var result = ''
+    var times = process.env.TIMES || 5
+    for (i=0; i < times; i++)
+      result += i + ' ';
+  response.send(result);
+});
+
 app.get('/db', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     console.log(process.env.DATABASE_URL);
@@ -27,6 +211,17 @@ app.get('/db', function (request, response) {
        { response.render('pages/db', {results: result.rows} ); }
     });
   });
+});
+
+app.get('/webhook', function(req, res) {
+  if (req.query['hub.mode'] === 'subscribe' &&
+      req.query['hub.verify_token'] === 'hello') {
+    console.log("Validating webhook");
+    res.status(200).send(req.query['hub.challenge']);
+  } else {
+    console.error("Failed validation. Make sure the validation tokens match.");
+    res.sendStatus(403);          
+  }  
 });
 
 app.get('/message', message.validate);
