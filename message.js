@@ -29,21 +29,21 @@ var message = {
                         
 
                         
-                        
-                        //check the tree number
-                        var response = event.message;
-                        var treeNum = event.message.seq;
-                        
-                        if(treeNum > startingSequenceNum){
-                            //what type of wine are you drinking?//
-                            
-                            //record the wine type
-                            var wineType = response.quick_reply.payload;
-                            
-                            //send the next message with wineType variable in it
-                            sendMessagewithTreeNum(treeNum++);
-                            
-                        }
+//                        
+//                        //check the tree number
+//                        var response = event.message;
+//                        var treeNum = event.message.seq;
+//                        
+//                        if(treeNum > startingSequenceNum){
+//                            //what type of wine are you drinking?//
+//                            
+//                            //record the wine type
+//                            var wineType = response.quick_reply.payload;
+//                            
+//                            //send the next message with wineType variable in it
+//                            sendMessagewithTreeNum(treeNum++);
+//                            
+//                        }
                     }
                 });
             });
