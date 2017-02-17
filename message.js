@@ -13,6 +13,7 @@ var message = {
                     if(event.message){
                         //we've received a message object from the user
                         console.log("message received");
+                        console.log(event.message.seq);
                         res.sendStatus(200);
 
 //                        var treeNum = event.message.seq;
