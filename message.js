@@ -16,10 +16,13 @@ var message = {
                         //we've received a message object from the user
                         console.log("message received");
                         console.log(treeNumber);
+                        
+                    
+                        sendMessagewithTreeNum(event.sender.id, treeNumber);
                         treeNumber++;
+                        
                         res.sendStatus(200);
 
-//                        var treeNum = event.message.seq;
 //                        
 //                        //check if 'wine' so we can start chatbot
 //                        if(event.message.text == 'Wine'){
