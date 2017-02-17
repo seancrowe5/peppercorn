@@ -1,26 +1,32 @@
 [
     {
       "treeNum": 0,
-      "text": "Bot message 1",
-      "quick": ["Response 1", "Response 2"]
+      "text": "What type of wine are you drinking? (go ahead and type it out)",
+      "quick": ["Red", "White"]
     },
 
     {
       "treeNum": 1,
-      "text": "Bot message 2",
-      "quick": ["Response 1", "Response 2"]
+      "text": "Cheers! What is the one most prominent aroma?",
+      "quick": ["Aroma 1", "Aroma 2", "Aroma 3", "Aroma 4", "Aroma 5", "Aroma 6"]
     },
 
     {
       "treeNum": 2,
-      "text": "Bot message 3",
-      "quick": ["Response 1", "Response 2"]
+      "text": "What is the one most prominent flavor?",
+      "quick": ["Flavor 1", "Flavor 2", "Flavor 3", "Flavor 4", "Flavor 5", "Flavor 6"]
     },
 
     {
       "treeNum": 3,
-      "text": "Bot message 4",
-      "quick": ["Response 1", "Response 2"]
+      "text": "Take a picture of the label and send it so I can remeber what you thought of it!",
+      "quick": ["UPLOAD PICTURE"]
+    },
+
+    {
+      "treeNum": 4,
+      "text": "Great! That's all for now. Message me: WINE in all caps when you want to taste another wine. Happy sipping!",
+      "quick": ["Talk to you later!"]
     }
 
 ]
