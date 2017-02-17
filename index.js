@@ -30,9 +30,7 @@ app.get('/db', function (request, response) {
 });
 
 app.get('/message', message.validate);
-app.post('/message', function(){
-    consol.log("hi");
-});
+app.post('/message', message.receieve);
 
 app.post('/webhook', function (req, res) {
  var data = req.body;
