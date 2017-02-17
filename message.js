@@ -14,7 +14,8 @@ var message = {
                         //we've received a message object from the user
                         console.log("message received");
 
-//                        
+                               res.sendStatus(200);
+
 //                        var treeNum = event.message.seq;
 //                        
 //                        //check if 'wine' so we can start chatbot
@@ -50,7 +51,6 @@ var message = {
             });
         }
         
-        res.sendStatus(200);
     },
     
     send: function(req, res){
