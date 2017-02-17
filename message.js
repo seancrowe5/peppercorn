@@ -17,19 +17,20 @@ var message = {
                         console.log("message received");
                         console.log(treeNumber);
                         
+                         //check if 'wine' so we can start chatbot
+                        if(event.message.text == 'Wine'){
+                            //send first message
+                            treeNumber = 0;
+                        }
+//                        
                     
                         sendMessagewithTreeNum(event.sender.id, treeNumber);
                         treeNumber++;
                         
                         res.sendStatus(200);
 
-//                        
-//                        //check if 'wine' so we can start chatbot
-//                        if(event.message.text == 'Wine'){
-//                            //send first message
-//                            treeNum = 0;
-//                        }
-//                        
+                        
+                       
 //                        sendMessagewithTreeNum(event.sender.id, treeNum++);
 //                       
    
