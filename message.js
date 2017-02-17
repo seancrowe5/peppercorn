@@ -13,24 +13,20 @@ var message = {
                     if(event.message){
                         //we've received a message object from the user
                         console.log("message received");
-                        var treeNum = event.message.seq;
-                        
-                        //check if 'wine' so we can start chatbot
-                        if(event.message.text == 'Wine'){
-                            //send first message
-                            treeNum = 0;
-                        }
-                        
-                        sendMessagewithTreeNum(event.sender.id, treeNum++);
-                       
-                                                       res.sendStatus(200);
+                        res.sendStatus(200);
 
-                        
-                        
-
-                        
+//                        var treeNum = event.message.seq;
 //                        
-//                        //check the tree number
+//                        //check if 'wine' so we can start chatbot
+//                        if(event.message.text == 'Wine'){
+//                            //send first message
+//                            treeNum = 0;
+//                        }
+//                        
+//                        sendMessagewithTreeNum(event.sender.id, treeNum++);
+//                       
+   
+//                       //check the tree number
 //                        var response = event.message;
 //                        var treeNum = event.message.seq;
 //                        
@@ -44,6 +40,8 @@ var message = {
 //                            sendMessagewithTreeNum(treeNum++);
 //                            
 //                        }
+                        
+                        
                     }
                 });
             });
